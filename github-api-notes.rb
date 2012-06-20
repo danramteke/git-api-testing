@@ -133,3 +133,132 @@ tree_sha = create_tree(blob_sha, "github-api-notes.rb")["sha"]
 commit_sha = create_commit("posting my notes", master_commit_sha, tree_sha)["sha"]
 update_reference(commit_sha)
 
+=begin
+{
+    "has_downloads": true,
+    "watchers": 1,
+    "clone_url": "https://github.com/danramteke/git-api-testing.git",
+    "ssh_url": "git@github.com:danramteke/git-api-testing.git",
+    "mirror_url": null,
+    "git_url": "git://github.com/danramteke/git-api-testing.git",
+    "permissions": {
+      "admin": true,
+      "pull": true,
+      "push": true
+    },
+    "has_wiki": true,
+    "has_issues": true,
+    "forks": 1,
+    "language": null,
+    "fork": false,
+    "description": "testing out the github api",
+    "full_name": "danramteke/git-api-testing",
+    "url": "https://api.github.com/repos/danramteke/git-api-testing",
+    "open_issues": 0,
+    "size": 0,
+    "svn_url": "https://github.com/danramteke/git-api-testing",
+    "private": false,
+    "created_at": "2012-06-19T18:08:20Z",
+    "html_url": "https://github.com/danramteke/git-api-testing",
+    "pushed_at": "2012-06-19T18:08:21Z",
+    "owner": {
+      "login": "danramteke",
+      "avatar_url": "https://secure.gravatar.com/avatar/0f332eefb17d62070ae45b89a5784617?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "url": "https://api.github.com/users/danramteke",
+      "gravatar_id": "0f332eefb17d62070ae45b89a5784617",
+      "id": 15749
+    },
+    "name": "git-api-testing",
+    "homepage": null,
+    "id": 4717348,
+    "updated_at": "2012-06-19T18:08:21Z"
+  }
+
+
+
+
+
+  SOLO:fv cyrus$ curl -H "Authorization: bearer 5e645e5ee8b31090db53a059e0d7f2da93c8053b" https://api.github.com/repos/danramteke/git-api-testing/git/refs/heads/master
+{
+  "object": {
+    "type": "commit",
+    "url": "https://api.github.com/repos/danramteke/git-api-testing/git/commits/769ea73f4a9713783e42de3cc617c597db304275",
+    "sha": "769ea73f4a9713783e42de3cc617c597db304275"
+  },
+  "url": "https://api.github.com/repos/danramteke/git-api-testing/git/refs/heads/master",
+  "ref": "refs/heads/master"
+}
+
+
+
+
+
+
+
+
+
+SOLO:fv cyrus$ curl -H "Authorization: bearer 5e645e5ee8b31090db53a059e0d7f2da93c8053b" https://api.github.com/repos/danramteke/git-api-testing/git/trees/769ea73f4a9713783e42de3cc617c597db304275
+{
+  "url": "https://api.github.com/repos/danramteke/git-api-testing/git/trees/769ea73f4a9713783e42de3cc617c597db304275",
+  "tree": [
+    {
+      "url": "https://api.github.com/repos/danramteke/git-api-testing/git/blobs/cb66371e43311edb901329b309b3ce8abc3a1bed",
+      "type": "blob",
+      "sha": "cb66371e43311edb901329b309b3ce8abc3a1bed",
+      "size": 59,
+      "path": "README.md",
+      "mode": "100644"
+    }
+  ],
+  "sha": "769ea73f4a9713783e42de3cc617c597db304275"
+}
+
+
+
+
+
+
+
+
+
+
+SOLO:fv cyrus$ curl -H "Authorization: bearer 5e645e5ee8b31090db53a059e0d7f2da93c8053b" https://api.github.com/repos/danramteke/git-api-testing/git/blobs/cb66371e43311edb901329b309b3ce8abc3a1bed
+{
+  "content": "Z2l0LWFwaS10ZXN0aW5nCj09PT09PT09PT09PT09PQoKdGVzdGluZyBvdXQg\ndGhlIGdpdGh1YiBhcGk=\n",
+  "url": "https://api.github.com/repos/danramteke/git-api-testing/git/blobs/cb66371e43311edb901329b309b3ce8abc3a1bed",
+  "size": 59,
+  "sha": "cb66371e43311edb901329b309b3ce8abc3a1bed",
+  "encoding": "base64"
+}
+
+
+
+
+SOLO:fv cyrus$ curl  -d '{"content": "so much content", "encoding": "utf-8"}' -H "Authorization: bearer 5e645e5ee8b31090db53a059e0d7f2da93c8053b" https://api.github.com/repos/danramteke/git-api-testing/git/blobs
+{
+  "url": "https://api.github.com/repos/danramteke/git-api-testing/git/blobs/c0810c84695544dca65308c454a7ef2227b12975",
+  "sha": "c0810c84695544dca65308c454a7ef2227b12975"
+}
+
+
+
+
+SOLO:fv cyrus$ curl  -d '{ "tree": [ { "path": "file.rb", "mode": "100644", "type": "blob", "sha": "c0810c84695544dca65308c454a7ef2227b12975" } ] }' -H "Authorization: bearer 5e645e5ee8b31090db53a059e0d7f2da93c8053b" https://api.github.com/repos/danramteke/git-api-testing/git/trees
+{
+  "url": "https://api.github.com/repos/danramteke/git-api-testing/git/trees/c212664aef0bffdf9981d86f3d494887f001604c",
+  "sha": "c212664aef0bffdf9981d86f3d494887f001604c",
+  "tree": [
+    {
+      "type": "blob",
+      "url": "https://api.github.com/repos/danramteke/git-api-testing/git/blobs/c0810c84695544dca65308c454a7ef2227b12975",
+      "size": 15,
+      "sha": "c0810c84695544dca65308c454a7ef2227b12975",
+      "path": "file.rb",
+      "mode": "100644"
+    }
+  ]
+}
+
+
+
+=end
